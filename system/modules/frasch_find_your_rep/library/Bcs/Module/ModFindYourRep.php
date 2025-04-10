@@ -12,6 +12,13 @@
 
   
 namespace Bcs\Module;
+
+use Contao\BackendTemplate;
+use Contao\Config;
+use Contao\Date;
+use Contao\FrontendTemplate;
+use Contao\StringUtil;
+use Contao\System;
  
 use Bcs\Model\Rep;
 use Bcs\Reps; 
@@ -45,11 +52,12 @@ class ModFindYourRep extends \Contao\Module
      */
     public function generate()
     {
-        if (TL_MODE == 'BE')
-        {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+        $request = System::getContainer()->get('request_stack')->getCurrentRequest();
+		if ($request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request))
+		{
+            $objTemplate = new BackendTemplate('be_wildcard');
  
-            $objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['mod_find_your_rep'][0]) . ' ###';
+            $objTemplate->wildcard = '### ' . mb_strtoupper($GLOBALS['TL_LANG']['FMD']['mod_find_your_rep'][0]) . ' ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
