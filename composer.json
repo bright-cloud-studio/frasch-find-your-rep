@@ -1,36 +1,45 @@
 {
     "name":"bright-cloud-studio/frasch-find-your-rep",
     "description":"A custom version of our Rep Locator package for Frasch",
-    "homepage": "http://brightcloudstudio.com/",
     "keywords":["frasch", "find", "your", "rep", "bright", "cloud", "studio"],
-    "type":"contao-module",
+    "type": "contao-bundle",
+    "homepage": "http://brightcloudstudio.com/",
     "license":"LGPL-3.0-or-later",
+    "version": "5.3.1",
     "authors":[
         {
-            "name":"Bright Cloud Studio",
-            "homepage":"https://brightcloudstudio.com"
+            "name": "Bright Cloud Studio",
+            "homepage": "https://brightcloudstudio.com",
+            "email": "mark@brightcloudstudio.com",
+            "role": "Developer"
         }
     ],
+    "support":{
+        "issues": "https://github.com/bright-cloud-studio/frasch-find-your-rep/issues",
+        "source": "https://github.com/bright-cloud-studio/frasch-find-your-rep"
+    },
     "require":{
         "php": "^7.3 || ^8.0",
         "contao/core-bundle": "^4.13 || ^5.3"
     },
     "require-dev": {
-        "contao/manager-plugin": "^2.0"
+        "contao/core-bundle": "^4.13 || ^5.3"
+    },
+    "extra":{
+        "contao-manager-plugin": "Bcs\\FindYourRepBundle\\ContaoManager\\Plugin"
     },
     "autoload": {
         "psr-4": {
-            "Bcs\\": [
-                "system/modules/frasch_find_your_rep/library/Bcs"
-            ]
-        }
-    },
-    "extra": {
-        "contao": {
-            "sources": {
-                "system/modules/frasch_find_your_rep": "system/modules/frasch_find_your_rep"
-            }
-        }
-    },
-    "minimum-stability": "dev"
+            "Bcs\\FindYourRepBundle\\": "src"
+        },
+        "classmap": [
+            "src/Resources/contao"
+        ],
+        "exclude-from-classmap": [
+            "src/Resources/contao/config/",
+            "src/Resources/contao/dca/",
+            "src/Resources/contao/languages/",
+            "src/Resources/contao/templates/"
+        ]
+    }
 }
