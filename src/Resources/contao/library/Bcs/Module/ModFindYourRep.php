@@ -66,8 +66,11 @@ class ModFindYourRep extends \Contao\Module
     {
         $objLocation = Rep::findBy('published', '1');
 
-        $rand_ver = rand(1,9999);
-        $GLOBALS['TL_BODY']['isotope_spec_sheet_pdf'] = '<script src="system/modules/frasch_find_your_rep/assets/js/mod_find_your_rep.js?v='.$rand_ver.'"></script>';
+        if (!in_array('bundles/bcsfindyourrep/js/mod_find_your_rep.js', $GLOBALS['TL_JAVASCRIPT'])) { 
+			$GLOBALS['TL_JAVASCRIPT'][] = 'bundles/bcsfindyourrep/js/mod_find_your_rep.js';
+		}
+        
+        //$GLOBALS['TL_BODY']['isotope_spec_sheet_pdf'] = '<script src="system/modules/frasch_find_your_rep/assets/js/mod_find_your_rep.js?v='.$rand_ver.'"></script>';
 		
   		// Return if no pending items were found
   		if (!$objLocation)
@@ -110,7 +113,7 @@ class ModFindYourRep extends \Contao\Module
             if(str_contains($objLocation->product_line, 'corporate')) {
                 
     			$strItemTemplate = ($this->locations_customItemTpl != '' ? $this->locations_customItemTpl : 'item_rep');
-    			$objTemplate = new \FrontendTemplate($strItemTemplate);
+    			$objTemplate = new FrontendTemplate($strItemTemplate);
     			$objTemplate->setData($arrLocation);
     			$arrRepsCorporate[$corp_rep_id] = $objTemplate->parse();
                 $corp_rep_id++;
@@ -118,7 +121,7 @@ class ModFindYourRep extends \Contao\Module
             } else {
     
     			$strItemTemplate = ($this->locations_customItemTpl != '' ? $this->locations_customItemTpl : 'item_rep');
-    			$objTemplate = new \FrontendTemplate($strItemTemplate);
+    			$objTemplate = new FrontendTemplate($strItemTemplate);
     			$objTemplate->setData($arrLocation);
     			$arrReps[$rep_id] = $objTemplate->parse();
                 $rep_id++;
