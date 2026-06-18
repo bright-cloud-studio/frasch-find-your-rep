@@ -68,7 +68,7 @@
 		<div class="wrapper">
 			<p class="label">Product Line</p>
 			<p class="product_line">
-				<?= $this->product_line ?>
+				<?= implode(', ', (array) $this->product_line) ?>
 			</p>
 		</div>
 		

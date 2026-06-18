@@ -39,12 +39,6 @@ $GLOBALS['TL_DCA']['tl_rep'] = array
         ),
         'global_operations' => array
         (
-            'export' => array
-            (
-                'label'               => 'Export Reps CSV',
-                'href'                => 'key=exportReps',
-                'icon'                => 'system/modules/frasch_find_your_rep/assets/icons/file-export-icon-16.png'
-            ),
             'all' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
@@ -79,9 +73,9 @@ $GLOBALS['TL_DCA']['tl_rep'] = array
             'toggle' => array
             (
               'label'               => &$GLOBALS['TL_LANG']['tl_rep']['toggle'],
-              'icon'                => 'visible.gif',
-              'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
-              'button_callback'     => array('Bcs\Backend\Reps', 'toggleIcon')
+              'href'                => 'act=toggle&amp;field=published',
+              'icon'                => 'visible.svg',
+              'showInHeader'        => true
             ),
             'show' => array
             (
@@ -223,10 +217,11 @@ $GLOBALS['TL_DCA']['tl_rep'] = array
     		'published' => array
     		(
     			'exclude'                 => true,
+    			'toggle'                  => true,
     			'label'                   => &$GLOBALS['TL_LANG']['tl_rep']['published'],
     			'inputType'               => 'checkbox',
-    			'eval'                    => array('submitOnChange'=>true, 'doNotCopy'=>true),
+    			'eval'                    => array('isBoolean'=>true, 'submitOnChange'=>true, 'doNotCopy'=>true),
     			'sql'                     => "char(1) NOT NULL default ''"
-    		)		
+    		)
     )
 );

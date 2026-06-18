@@ -10,8 +10,7 @@ use Contao\StringUtil;
 use Contao\System;
  
 use Bcs\Model\Rep;
-use Bcs\Reps; 
- 
+
 class ModFindYourRep extends \Contao\Module
 {
  
@@ -94,9 +93,9 @@ class ModFindYourRep extends \Contao\Module
             $arrLocation = array();
              
             // check if our product_line data contains corporate
-            $product_line = unserialize($objLocation->product_line);
-            
-            
+            $product_line = StringUtil::deserialize($objLocation->product_line, true);
+
+
             $arrLocation['rep_name'] 			= $objLocation->rep_name;
 			$arrLocation['company_name']		= $objLocation->company_name;
 			$arrLocation['region']              = $objLocation->region;
@@ -108,7 +107,7 @@ class ModFindYourRep extends \Contao\Module
             $arrLocation['email']               = $objLocation->email;
             $arrLocation['website'] 			= $objLocation->website;
             $arrLocation['product_line']        = $product_line;
-			$arrLocation['state']               = unserialize($objLocation->state);
+			$arrLocation['state']               = StringUtil::deserialize($objLocation->state, true);
             
             if(str_contains($objLocation->product_line, 'corporate')) {
                 
