@@ -48,42 +48,7 @@ $GLOBALS['TL_DCA']['tl_rep'] = array
             )
 
         ),
-        'operations' => array
-        (
-            'edit' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG']['tl_rep']['edit'],
-                'href'                => 'act=edit',
-                'icon'                => 'edit.gif'
-            ),
-			
-            'copy' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG']['tl_rep']['copy'],
-                'href'                => 'act=copy',
-                'icon'                => 'copy.gif'
-            ),
-            'delete' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG']['tl_rep']['delete'],
-                'href'                => 'act=delete',
-                'icon'                => 'delete.gif',
-                'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
-            ),
-            'toggle' => array
-            (
-              'label'               => &$GLOBALS['TL_LANG']['tl_rep']['toggle'],
-              'href'                => 'act=toggle&amp;field=published',
-              'icon'                => 'visible.svg',
-              'showInHeader'        => true
-            ),
-            'show' => array
-            (
-                'label'               => &$GLOBALS['TL_LANG']['tl_rep']['show'],
-                'href'                => 'act=show',
-                'icon'                => 'show.gif'
-            )
-        )
+        'operations' => array('edit', 'copy', 'delete', 'toggle', 'show')
     ),
  
     // Palettes
