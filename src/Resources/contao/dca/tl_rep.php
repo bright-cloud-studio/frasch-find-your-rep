@@ -167,7 +167,7 @@ $GLOBALS['TL_DCA']['tl_rep'] = array
     			'default'				  => '',
     			'options_callback'		  => array('Bcs\Backend\Reps', 'getStates'),
     			'eval'                    => array('multiple'=>true, 'chosen'=>true, 'tl_class'=>'w50'),
-    			'sql'                     => "varchar(255) NOT NULL default ''"
+    			'sql'                     => "blob NULL"
     		),
         'zip' => array
     		(
